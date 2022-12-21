@@ -1,7 +1,25 @@
+from tkinter.messagebox import showerror
 from math import ceil
 
 
-def calc(lino, room):
+def calc(room, lino=0):
+    # англ
+    room = room.replace(' ', '')
+    room = room.replace('x', ' ')
+    room = room.replace('X', ' ')
+    # рус
+    room = room.replace('х', ' ')
+    room = room.replace('Х', ' ')
+
+    room = room.replace(',', '.')
+    room = room.split(' ')
+
+    try:
+        a, b = float(room[0]), float(room[1])
+    except Exception:
+        showerror(message='Ты лох')
+        return False
+
     square = None
     unit_price = None
 
@@ -19,8 +37,9 @@ def calc(lino, room):
             square = 4.5
             unit_price = 950
 
-    all_price = unit_price * ceil(room / square)
-    print(all_price)
+    count = ceil(a * b / square)
+    all_price = count * unit_price
+    print(f'{count} рулонов обойдутся в {all_price} рублей')
 
 
-my_calc = calc(lino=3, room=199)
+my_calc = calc(lino=3, room='6 x 4,5')
