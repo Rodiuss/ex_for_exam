@@ -1,9 +1,7 @@
 from tkinter.messagebox import showerror
 from math import ceil
 import tkinter as tk
-from tkinter.messagebox import showinfo
-import tkinter.ttk as ttk
-from tkinter import IntVar, StringVar
+from tkinter import IntVar, StringVar, ttk
 
 
 root = tk.Tk()
@@ -37,7 +35,11 @@ def calc(room, lino):
         a, b = float(room[0]), float(room[1])
     except Exception:
         showerror(message='Некорректный ввод!')
-        return False
+        return 'None'
+
+    if a < 0 or b < 0:
+        showerror(message='Некооректный ввод')
+        return 'None'
 
     square = None
     unit_price = None
@@ -59,7 +61,7 @@ def calc(room, lino):
 
     count = ceil(a * b / square)
     all_price = count * unit_price
-    my_str.set(f'{count} рулонов == {all_price}₽')
+    my_str.set(f'{count} рулон. == {all_price}₽')
 
 
 txt = tk.Entry(root, width=30)
