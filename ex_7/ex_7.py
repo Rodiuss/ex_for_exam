@@ -1,116 +1,191 @@
-from tkinter import ttk, Tk, IntVar, W
+from tkinter import *
+import os
+
+
+def formula():
+    try:
+        if label5.cget("text") == "Треугольник":
+            if float(entry1.get()) <= 0 or float(entry2.get()) <= 0:
+                itog = "Введите число больше нуля!"
+            else:
+                itog = float(entry1.get()) * float(entry2.get()) / 2
+        elif label5.cget("text") == "Параллелограмм":
+            if float(entry1.get()) <= 0 or float(entry2.get()) <= 0:
+                itog = "Введите число больше нуля!"
+            else:
+                itog = float(entry1.get()) * float(entry2.get())
+        elif label5.cget("text") == "Ромб":
+            if float(entry1.get()) <= 0 or float(entry2.get()) <= 0:
+                itog = "Введите число больше нуля!"
+            else:
+                itog = float(entry1.get()) * float(entry2.get())
+        elif label5.cget("text") == "Прямоугольник":
+            if float(entry1.get()) <= 0 or float(entry2.get()) <= 0:
+                itog = "Введите число больше нуля!"
+            else:
+                itog = float(entry1.get()) * float(entry2.get())
+        elif label5.cget("text") == "Квадрат":
+            if float(entry1.get()) <= 0:
+                itog = "Введите число больше нуля!"
+            else:
+                itog = float(entry1.get()) * float(entry1.get())
+        elif label5.cget("text") == "Трапеция":
+            if float(entry1.get()) <= 0 or float(entry2.get()) <= 0 or float(entry4.get()) <= 0:
+                itog = "Введите число больше нуля!"
+            else:
+                itog = float(entry1.get()) * float(entry2.get()) * \
+                    float(entry4.get()) / 2
+        elif label5.cget("text") == "Круг":
+            if float(entry1.get()) <= 0:
+                itog = "Введите число больше нуля!"
+            else:
+                itog = float(entry1.get()) * float(entry1.get()) * 3.14
+
+        entry3.delete(0, 'end')
+        entry3.insert(0, str(itog))
+
+    except ValueError:
+        entry3.delete(0, 'end')
+        entry3.insert(0, str("Введите число!"))
+
+
+def triangle():
+    label5.config(text="Треугольник")
+    label1.config(text="Введите b:")
+    label2.config(text="Введите h:")
+    label2.place(x=5, y=45)
+    entry2.place(x=5, y=65)
+    label3.place(x=5, y=85)
+    entry3.place(x=5, y=105)
+    label6.place(x=-150, y=-100)
+    entry4.place(x=-150, y=-100)
+    button1.place(x=5, y=130)
+    button2.place(x=5, y=160)
+
+
+def parallelogram():
+    label5.config(text="Параллелограмм")
+    label1.config(text="Введите b:")
+    label2.config(text="Введите h:")
+    label2.place(x=5, y=45)
+    entry2.place(x=5, y=65)
+    label3.place(x=5, y=85)
+    entry3.place(x=5, y=105)
+    label6.place(x=-100, y=125)
+    entry4.place(x=-100, y=-100)
+    button1.place(x=5, y=130)
+    button2.place(x=5, y=160)
+
+
+def rhomb():
+    label5.config(text="Ромб")
+    label1.config(text="Введите b:")
+    label2.config(text="Введите h:")
+    label2.place(x=5, y=45)
+    entry2.place(x=5, y=65)
+    label3.place(x=5, y=85)
+    entry3.place(x=5, y=105)
+    label6.place(x=-100, y=125)
+    entry4.place(x=-100, y=-100)
+    button1.place(x=5, y=130)
+    button2.place(x=5, y=160)
+
+
+def rectangle():
+    label5.config(text="Прямоугольник")
+    label1.config(text="Введите L:")
+    label2.config(text="Введите w:")
+    label2.place(x=5, y=45)
+    entry2.place(x=5, y=65)
+    label3.place(x=5, y=85)
+    entry3.place(x=5, y=105)
+    label6.place(x=-100, y=125)
+    entry4.place(x=-100, y=-100)
+    button1.place(x=5, y=130)
+    button2.place(x=5, y=160)
+
+
+def square():
+    label5.config(text="Квадрат")
+    label1.config(text="Введите l:")
+    label2.place(x=-100, y=-45)
+    entry2.place(x=-100, y=-65)
+    label3.place(x=5, y=45)
+    entry3.place(x=5, y=65)
+    label6.place(x=-100, y=-125)
+    entry4.place(x=-100, y=-100)
+    button1.place(x=5, y=95)
+    button2.place(x=5, y=125)
+
+
+def trapezoid():
+    label5.config(text="Трапеция")
+    label1.config(text="Введите b:")
+    label2.config(text="Введите h:")
+    label2.place(x=5, y=45)
+    entry2.place(x=5, y=65)
+    label3.place(x=5, y=125)
+    entry3.place(x=5, y=145)
+    label6.place(x=5, y=85)
+    entry4.place(x=5, y=105)
+    button1.place(x=5, y=175)
+    button2.place(x=5, y=205)
+
+
+def tircle():
+    label5.config(text="Круг")
+    label1.config(text="Введите r:")
+    label2.place(x=-100, y=-45)
+    entry2.place(x=-100, y=-65)
+    label3.place(x=5, y=45)
+    entry3.place(x=5, y=65)
+    label6.place(x=-100, y=125)
+    entry4.place(x=-100, y=-100)
+    button1.place(x=5, y=95)
+    button2.place(x=5, y=125)
+
+
+def description():
+    os.startfile(r'photo.png')
 
 
 root = Tk()
-root.geometry('500x400')
-root.title('program')
-
-my_var = IntVar()
-my_var.set(0)
-
-first = ttk.Radiobutton(root,
-                        text='Треугольник',
-                        variable=my_var,
-                        value=0).grid(column=1, row=1, sticky=W, padx=20)
-second = ttk.Radiobutton(root,
-                         text='Параллеограмм',
-                         variable=my_var,
-                         value=1).grid(column=1, row=2, sticky=W, padx=20)
-third = ttk.Radiobutton(root,
-                        text='Ромб',
-                        variable=my_var,
-                        value=2).grid(column=1, row=3, sticky=W, padx=20)
-fourth = ttk.Radiobutton(root,
-                         text='Прямоугольник',
-                         variable=my_var,
-                         value=3).grid(column=2, row=1, sticky=W, padx=20)
-fifth = ttk.Radiobutton(root,
-                        text='квадрат',
-                        variable=my_var,
-                        value=4).grid(column=2, row=2, sticky=W, padx=20)
-sixth = ttk.Radiobutton(root,
-                        text='трапеция',
-                        variable=my_var,
-                        value=5).grid(column=2, row=3, sticky=W, padx=20)
-seventh = ttk.Radiobutton(root,
-                          text='круг',
-                          variable=my_var,
-                          value=6).grid(column=1, row=4, sticky=W, padx=20)
-label = ttk.Label(root, text='Число 1').grid(column=1, row=5)
-e_first = ttk.Entry(root).grid(column=2, row=5)
-label = ttk.Label(root, text='Число 2').grid(column=1, row=6)
-e_second = ttk.Entry(root).grid(column=2, row=6)
-label = ttk.Label(root, text='Число 3').grid(column=1, row=7)
-e_third = ttk.Entry(root).grid(column=2, row=7)
-label = ttk.Label(root, text='Число 4').grid(column=1, row=8)
-e_fourth = ttk.Entry(root).grid(column=2, row=8)
-label = ttk.Label(root, text='Число 5').grid(column=1, row=9)
-e_fifth = ttk.Entry(root).grid(column=2, row=9)
-label = ttk.Label(root, text='Число 6').grid(column=1, row=10)
-e_sixth = ttk.Entry(root).grid(column=2, row=10)
-label = ttk.Label(root, text='Число 7').grid(column=1, row=11)
-e_seventh = ttk.Entry(root).grid(column=2, row=11)
-
-
-def calc(func):
-    pass
-
-
+root.title("Вычисление площадей")
+root.geometry("440x250")
+root.resizable(width=False, height=False)
+label1 = Label(root, text="Введите b:")
+label1.place(x=5, y=5)
+entry1 = Entry(root, width=50)
+entry1.place(x=5, y=25)
+label2 = Label(root, text="Введите h:")
+label2.place(x=5, y=45)
+entry2 = Entry(root, width=50)
+entry2.place(x=5, y=65)
+label3 = Label(root, text="Ответ:")
+label3.place(x=5, y=85)
+entry3 = Entry(root, width=50)
+entry3.place(x=5, y=105)
+label6 = Label(root, text="Введите B:")
+label6.place(x=-100, y=85)
+entry4 = Entry(root, width=50)
+entry4.place(x=-100, y=-100)
+button1 = Button(root, text="Вычислить", width=12, command=formula)
+button1.place(x=5, y=130)
+button2 = Button(root, text="Описание фигур", width=12, command=description)
+button2.place(x=5, y=160)
+label4 = Label(root, text="Выбрана  фигура:")
+label4.place(x=200, y=190)
+label5 = Label(root, text="Треугольник")
+label5.place(x=310, y=190)
+mainmenu = Menu(root)
+root.config(menu=mainmenu)
+vidmenu = Menu(mainmenu, tearoff=0)
+mainmenu.add_cascade(label="Выберите фигуру", menu=vidmenu)
+vidmenu.add_command(label="Треугольник", command=triangle)
+vidmenu.add_command(label="Параллелограмм", command=parallelogram)
+vidmenu.add_command(label="Ромб", command=rhomb)
+vidmenu.add_command(label="Прямоугольник", command=rectangle)
+vidmenu.add_command(label="Квадрат", command=square)
+vidmenu.add_command(label="Трапеция", command=trapezoid)
+vidmenu.add_command(label="Круг", command=tircle)
 root.mainloop()
-
-
-'''Какую операцию вы хотите выполнить?
-\n 1 периметр треугольника
-\n 2 периметр параллелограмма
-\n 3 периметр ромба
-\n 4 периметр прямоугольника
-\n 5 периметр квадрата
-\n 6 периметр трапеции
-\n 7 периметр круга
-\n'))
-
-if v == 1:
-    q1 = int(input('Введите число 1: '))
-    q2 = int(input('Введите число 2: '))
-    q3 = int(input('Введите число 3: '))
-    r = q1 + q2 + q3
-    p = 'периметр'
-    t = p
-if v == 2:
-    q1 = int(input('Введите число 1: '))
-    q2 = int(input('Введите число 2: '))
-    q3 = int(input('Введите число 3: '))
-    q4 = int(input('Введите число 4: '))
-    r = q1 + q2 + q3 + q4
-    l = 'периметр'
-    t = l
-if v == 3:
-    q1 = int(input('Введите число 1: '))
-    r = 4 * q1
-    m = 'периметр'
-    t = m
-if v == 4:
-    q1 = int(input('Введите число 1: '))
-    q2 = int(input('Введите число 2: '))
-    r = 2*q1 + 2*q2
-    n = 'периметр'
-    t = n
-if v == 5:
-    q1 = int(input('Введите число 1: '))
-    r = 4*q1
-    k = 'периметр'
-    t = k
-if v == 6:
-    q1 = int(input('Введите число 1: '))
-    q2 = int(input('Введите число 2: '))
-    q3 = int(input('Введите число 3: '))
-    q4 = int(input('Введите число 4: '))
-    r = q1 + q2 + q3 + q4
-    b = 'периметр'
-    t = b
-if v == 7:
-    q1 = int(input('Введите число 1: '))
-    r = 3.14 * q1
-    c = 'периметр'
-    t = c
-print('Результат ', t, ' = ', r)'''
