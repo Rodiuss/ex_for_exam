@@ -1,7 +1,8 @@
 from tkinter.messagebox import showerror
 from math import ceil
 import tkinter as tk
-from tkinter import IntVar, StringVar, ttk
+from tkinter import IntVar, StringVar, ttk, NO
+from tkinter import *
 
 
 root = tk.Tk()
@@ -84,7 +85,7 @@ class Table(tk.Frame):
     def __init__(self, parent, headings=tuple(), rows=tuple()):
 
         super().__init__(parent)
-        table = ttk.Treeview(parent, show='headings', selectmode='browse')
+        table = ttk.Treeview(parent, show='headings', selectmode='none')
         table['columns'] = headings
         table['displaycolumns'] = headings
         for head in headings:
@@ -92,10 +93,14 @@ class Table(tk.Frame):
             table.column(head, anchor=tk.CENTER)
         for row in rows:
             table.insert('', tk.END, values=tuple(row))
-        table.column('# 1', width=300)
-        table.column('# 2', width=150)
-        table.column('# 3', width=250)
+        table.column('# 1', minwidth=300, width=300)
+        table.column('# 2', minwidth=150, width=150)
+        table.column('# 3', minwidth=250, width=250)
         table.grid(column=4, row=0, columnspan=9)
+        table.bind('<Button-1>', self.disableEvent)
+
+    def disableEvent(self, event):
+        return "break"
 
 
 table = Table(root, headings=('Марка линолеума',
